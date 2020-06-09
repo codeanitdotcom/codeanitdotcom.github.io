@@ -1,0 +1,165 @@
+var path = require("path");
+
+module.exports = {
+  siteMetadata: {
+    pathPrefix: '/',
+    keywords: [
+      'Anit Shrestha Manandhar',
+      'codeanit',
+      'Software Engineering',
+      'Technical Articles',
+      'Programming Blog',
+    ],
+    title: "Technical Blog by Anit Shrestha Manandhar.",
+    titleAlt: 'codeanit.com',
+    description:
+      "I am not an expert, I code for a living. I have some experience building software systems that solves the problems. Interested in mind, body and technology. Here are few things I learn and share my view about tech.",
+    url: 'https://codeanit.com', // Site domain without trailing slash
+    siteUrl: 'https://codeanit.com/', // url + pathPrefix
+    siteLanguage: 'en', // Language Tag on <html> element
+    logo: 'src/static/logo/logo.png',
+    // banner: 'src/static/logo/banner.png',
+    favicon: 'static/favicon.png', // Manifest favicon generation
+    shortName: 'codeanit', // Shortname for manifest, must be shorter than 12 characters
+    author: 'codeanit', // Author for schemaORGJSONLD
+    themeColor: '#000000',
+    backgroundColor: '#ffffff',
+    twitter: '@codeanit', // Twitter Username
+    twitterDesc:
+      'Tweets by Anit Shrestha Manandhar.',
+  },
+  plugins: [
+    'gatsby-plugin-printer',
+    {
+      resolve: 'gatsby-plugin-lunr',
+      options: {
+        languages: [{ name: 'en' }],
+        fields: [
+          { name: 'title', store: true, attributes: { boost: 20 } },
+          { name: 'subtitle', store: true, attributes: { boost: 5 } },
+          { name: 'content' },
+          { name: 'slug', store: true },
+          { name: 'date', store: true },
+          { name: 'keywords', store: true },
+        ],
+        resolvers: {
+          Mdx: {
+            title: node => node.frontmatter.title,
+            subtitle: node => node.frontmatter.subtitle,
+            content: node => node.rawBody,
+            date: node => node.frontmatter.date,
+            slug: node => `/posts/${node.frontmatter.slug}`,
+            keywords: node => node.formatter.keywords,
+          },
+        },
+        filename: 'search_index.json',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/content/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Technical Blog by Anit Shrestha Manandhar.`,
+        short_name: `blog by codeanit`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
+        display: `minimal-ui`,
+        icon: `static/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'GTM-KWW9X8N',
+        head: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+          }
+        `,
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map(edge => {
+            return {
+              url: `${site.siteMetadata.siteUrl}${
+                edge.node.path === '/' ? '' : edge.node.path
+              }/`,
+              changefreq: `daily`,
+              priority: 0.7,
+            };
+          }),
+      },
+    },
+    'gatsby-plugin-offline',
+    'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: ['.mdx', '.md'],
+        defaultLayouts: {
+          default: require.resolve('./src/templates/Blog.tsx'),
+          posts: require.resolve('./src/templates/Blog.tsx')
+        },
+        remarkPlugins: [require('remark-toc')],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 900,
+              backgroundColor: 'transparent',
+              showCaptions: true,
+            },
+          },
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-sectionize',
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: `<svg style="width: 0px; height: 0px;"></svg>`,
+            },
+          },
+        ],
+      },
+    },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: './src/utils/typography',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: path.resolve(__dirname, `src/pages`),
+      },
+    },
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-twitter',
+
+  ],
+};
