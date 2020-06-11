@@ -15,12 +15,13 @@ exports.createPages = ({ graphql, actions }) => {
                   id
                   tableOfContents
                   timeToRead
-                  frontmatter {
+                  frontmatter { 
                     slug
                     title
                     subtitle
                     date
                     type
+                    keywords
                     cover {
                       childImageSharp {
                         fluid(
