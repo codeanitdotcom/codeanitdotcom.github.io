@@ -49,7 +49,7 @@ module.exports = {
             content: node => node.rawBody,
             date: node => node.frontmatter.date,
             slug: node => `/posts/${node.frontmatter.slug}`,
-            keywords: node => node.formatter.keywords,
+            keywords: node => node.frontmatter.keywords,
           },
         },
         filename: 'search_index.json',
