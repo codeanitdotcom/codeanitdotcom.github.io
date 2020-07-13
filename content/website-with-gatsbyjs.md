@@ -7,7 +7,7 @@ categories: ['general', 'framework', 'website']
 keywords: ['website', 'blog', 'gatsby', 'javascript', 'typescript', 'jam-stack', 'static-wesite']
 slug: website-with-gatsby
 cover: './img/gatsbyjs-logo-banner.jpg'
-type: 'blogPost'
+type: 'BlogPost'
 
 ---
 

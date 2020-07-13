@@ -17,15 +17,15 @@ export const Logo: React.FC<HeaderLogoProps> = (props) => {
         ['data-testid']: 'header-logo',
         ['aria-label']: props['aria-label'],
         alt: props.alt,
-        size: sticky && collapsed ? 40 : 60,
+        size: sticky && collapsed ? 30 : 45,
       })
     : null;
 
   return (
     <Link
       to="/"
-      aria-label="Go back to article list"
-      title="Go back to article list"
+      aria-label="Go back to homepage"
+      title="Go back to homepage"
     >
       {child}
     </Link>

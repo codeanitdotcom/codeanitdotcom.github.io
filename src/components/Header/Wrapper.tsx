@@ -5,16 +5,15 @@ import styled from '../../utils/styled';
 import { HeaderContext } from './Context';
 
 const HeaderContent = styled.div`
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     padding-left: 30px;
     padding-right: 30px;
   }
 
   padding-left: 70px;
-  padding-right: 70px;
   margin: 0 auto;
   height: inherit;
-  max-width: 1020px;
+  max-width: 900px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +41,7 @@ const HeaderWrapper = styled.div<StyledHeaderWrapperProps>`
   background: ${(props) => props.theme.backgroundColor};
   transition: ${(props) => props.theme.transitionTime}s;
   width: 100%;
-  border-top: 6px solid ${(props) => props.theme.blue};
+  // border-top: 6px solid ${(props) => props.theme.blue};
   position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
   z-index: 999;
   ${(props) =>
