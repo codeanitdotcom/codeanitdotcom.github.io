@@ -1,10 +1,14 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
+
+import { Flex, Box, Heading, Avatar } from '@primer/components'
+import { MegaphoneIcon } from "@primer/octicons-react";
+
 import Layout from '../layouts';
 import Seo from '../components/Seo';
 import styled from '../utils/styled';
-import SearchBox from '../components/SearchBox';
+// import SearchBox from '../components/SearchBox';
 
 const MONTHS = [
   'Jan',
@@ -22,7 +26,7 @@ const MONTHS = [
 ];
 
 export const pageQuery = graphql`
-  query IndexPageQuery {
+  query IndexAPageQuery {
     site {
       siteMetadata {
         title
@@ -43,7 +47,7 @@ export const pageQuery = graphql`
                 fluid(
                   maxWidth: 1050
                   maxHeight: 900
-                  quality: 70
+                  quality: 100
                   cropFocus: ENTROPY
                 ) {
                   ...GatsbyImageSharpFluid
@@ -88,110 +92,69 @@ interface Props {
 const IndexPage = ({ data, location }: Props) => {
   const [showSearch, setShowSearch] = React.useState(location.search !== '');
   let year = 0;
-  let headerProps= {
-    sticky: false,
-    slim: true,
-    collapsableOnScroll: true,
-    title: 'codeanit.com'
-  }
+  const headerProps = {};
 
   return (
     <Layout header={true} footer={true} headerProps={headerProps}>
       {() => {
         
         return (
-          <>
+          <MainBlock>
             <Seo />
+            <Box>
+              <Heading>Hello, World!</Heading>
+              <br/>
+              <Heading>I am Anit Shrestha Manandhar.</Heading>
+              <br/>
+              <p>
+                I am an experienced software engineer who has mostly worked in the backend development.
+                Connect with me at <a target='_blank' href='https://www.linkedin.com/in/anit'> Linkedin</a> or <a target='_blank' href='https://twitter.com/codeanit'>Twitter</a>. 
+              </p>
+            </Box> 
+            <p><MegaphoneIcon size={24} /> This website is still in progress and opensourced at <a  href='https://github.com/codeanit-website/website'>Github</a></p>
             
-            <h1 style={{ padding:'0.5em 0 0 0' }}>Technical blog by @codeanit</h1>
-              
-              <ShortcutList>
-                <SearchBox
-                  location={location}
-                  showOverride={showSearch}
-                  onClose={() => setShowSearch(false)}
-                />
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => setShowSearch(true)}
-                >
-                  <ShortcutIcon>Search</ShortcutIcon>
-                </div>
-              </ShortcutList>
-              
-              <h3 style={{ fontWeight: 900 }}>Articles</h3>  
-              <List data-id="article-list">
-                {data.allMdx.edges.map(({ node }) => {
-                  let currentYear = new Date(
-                    node.frontmatter.date
-                  ).getFullYear();
-                  let printYear;
-
-                  if (currentYear !== year) {
-                    printYear = true;
-                    year = currentYear;
-                  } else {
-                    printYear = false;
-                  }
-
-                  return (
-                    <li key={node.frontmatter.slug} data-testid="article-item">
-                      {printYear ? <YearBlock>{currentYear}</YearBlock> : null}
-                      <Link
-                        style={{ textDecoration: `none` }}
-                        to={`/posts/${node.frontmatter.slug}`}
-                      >
-                        <Block data-testid="article-link">
-                          <DateBlock>
-                            {`${
-                              MONTHS[new Date(node.frontmatter.date).getMonth()]
-                            } ${new Date(node.frontmatter.date).getDate()}`}
-                          </DateBlock>
-                          <TitleBlock>{node.frontmatter.title}</TitleBlock>
-                        </Block>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </List>
-          </>
+            <Heading>Articles</Heading>  
+            <List data-id="article-list">
+              {data.allMdx.edges.map(({ node }) => {
+                return (
+                  
+                  <li key={node.frontmatter.slug}>
+                    <Link
+                      style={{ textDecoration: `none` }}
+                      to={`/posts/${node.frontmatter.slug}`}
+                    >
+                      <Block data-testid="article-link">
+                        <DateBlock>
+                          {`${
+                            MONTHS[new Date(node.frontmatter.date).getMonth()]
+                          } ${new Date(node.frontmatter.date).getDate()}`}
+                        </DateBlock>
+                        <TitleBlock>{node.frontmatter.title}</TitleBlock>
+                      </Block>
+                    </Link>
+                  </li>
+                );
+              })}
+            </List>                                                                   
+          </MainBlock>
         );
       }}
     </Layout>
   );
 };
 
-const ShortcutList = styled('div')`
-  display: flex;
-  width: 100%;
-  margin-top: 8px;
-  margin-bottom: 30px;
-  div {
-    display: flex;
-    color: #8a8a90;
-    cursor: pointer;
+const MainBlock = styled('div')`
+  @media (max-width: 600px) {
+    padding-left: 15px;
   }
-`;
 
-const ShortcutIcon = styled('div')`
-  border: 2px solid #8a8a90;
-  border-radius: 5px;
-  min-width: 30px;
-  padding-left: 5px;
-  padding-right: 5px;
-  justify-content: center;
-  font-size: 12px;
-}
+  padding-left: 76px;
 `;
 
 const Block = styled('div')`
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     height: 100px;
   }
-
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
   padding-left: 15px;
   border-radius: 2px;
@@ -213,11 +176,11 @@ const Block = styled('div')`
   }
 `;
 
-const YearBlock = styled('div')`
-  padding: 30px 15px;
-  font-weight: 600;
-  font-size: 18px;
-`;
+// const YearBlock = styled('div')`
+//   padding: 30px 15px;
+//   font-weight: 600;
+//   font-size: 18px;
+// `;
 
 const DateBlock = styled('div')`
   font-size: 14px;

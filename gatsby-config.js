@@ -19,7 +19,7 @@ module.exports = {
     siteLanguage: 'en', // Language Tag on <html> element
     logo: 'src/static/logo/logo.png',
     // banner: 'src/static/logo/banner.png',
-    favicon: 'static/favicon.png', // Manifest favicon generation
+    favicon: 'src/static/logo/logo.png', // Manifest favicon generation
     shortName: 'codeanit', // Shortname for manifest, must be shorter than 12 characters
     author: 'codeanit', // Author for schemaORGJSONLD
     themeColor: '#000000',

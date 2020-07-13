@@ -7,5 +7,5 @@ export interface HeaderContextValue {
 
 export const HeaderContext = React.createContext<HeaderContextValue>({
   collapsed: true,
-  sticky: true,
+  sticky: false,
 });

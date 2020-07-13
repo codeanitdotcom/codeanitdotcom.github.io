@@ -6,18 +6,15 @@ import { useTheme } from '../context/ThemeContext';
 import styled from '../utils/styled';
 
 
-const Wrapper = styled.div`
-  transition: ${(props) => props.theme.transitionTime}s;
-  background: ${(props) => props.theme.backgroundColor};
-`;
+const Wrapper = styled.div``;
 
 const Content = styled.div`
-  @media (max-width: 700px) {
-    padding: 0px 30px 0px 30px;
+  @media (max-width: 600px) {
+    padding: 15px;
   }
   margin: 0 auto;
-  max-width: 1020px;
-  padding: 0px 70px 0px 70px;
+  max-width: 900px;
+  padding: 0px;
   color: ${(props) => props.theme.fontColor};
 `;
 
@@ -28,7 +25,6 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  console.log(props);
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site {

@@ -17,7 +17,7 @@ const ProgressBarWrapper = styled('div')<ProgressBarWrapperProps>`
     props.readingProgress === 100 ? '0' : '0.6'};
   transition: ${(props) => props.theme.transitionTime}s;
   height: calc(88vh - 40px);
-  max-height: 425px;
+  max-height: 900px;
   width: 1px;
   background-color: rgba(8, 8, 11, 0.3);
 

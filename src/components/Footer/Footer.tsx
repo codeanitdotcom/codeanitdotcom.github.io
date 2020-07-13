@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../Logo';
+// import Logo from '../Logo';
 import styled from '../../utils/styled';
 
 const HR = styled.hr``;
@@ -12,15 +12,14 @@ const FooterBlock = styled.div`
 `;
 
 const FooterWrapper = styled.div`
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     padding-left: 30px;
-    padding-right: 30px;
   }
 
   padding-top: 30px;
   padding-left: 70px;
   padding-right: 70px;
-  max-width: 1020px;
+  max-width: 900px;
   margin-top: 30px;
   color: ${(props) => props.theme.fontColor};
   margin: 0 auto;
@@ -41,9 +40,9 @@ const Footer: React.FC<{}> = () => (
       <HR />
       <FooterContent>
         <div>
-          © {new Date().getFullYear()} Anit Shrestha Manandhar —— Made with love in Nepal.
+          © {new Date().getFullYear()} Anit Shrestha Manandhar
         </div>
-        <Logo alt="Logo of codeanit" inverted={true} size={50} />
+        {/* <Logo alt="Logo of codeanit" size={50} /> */}
       </FooterContent>
     </FooterWrapper>
   </FooterBlock>

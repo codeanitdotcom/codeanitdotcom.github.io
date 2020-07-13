@@ -368,3 +368,45 @@ const SearchBoxOverlay = styled(motion.div)<{}>`
   height: 100%;
   z-index: 50;
 `;
+
+/** 
+  // Usage
+  // Copy paste the components where necessary,
+  <ShortcutList>
+    <SearchBox
+      location={location}
+      showOverride={showSearch}
+      onClose={() => setShowSearch(false)}
+    />
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => setShowSearch(true)}
+    >
+      <ShortcutIcon>Search</ShortcutIcon>
+    </div>
+  </ShortcutList>
+
+const ShortcutList = styled('div')`
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 30px;
+  div {
+    display: flex;
+    color: #8a8a90;
+    cursor: pointer;
+  }
+`;
+
+const ShortcutIcon = styled('div')`
+  border: 2px solid #8a8a90;
+  border-radius: 5px;
+  min-width: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  justify-content: center;
+  font-size: 12px;
+}
+`;
+ */

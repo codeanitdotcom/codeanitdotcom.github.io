@@ -1,6 +1,6 @@
 const theme = {
   light: {
-    backgroundColor: 'var(--codeanit-colors-body-0, #F6F7F8)',
+    backgroundColor: 'var(--codeanit-colors-body-0, #FFFFFF)',
     borderColor: '#f5f5f9',
     boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
     blue: 'var(--codeanit-colors-brand, #5184f9)',
