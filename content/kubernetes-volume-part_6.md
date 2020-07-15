@@ -4,7 +4,7 @@ title: Kubernetes Volume
 subtitle: Understanding How Kubernetes Stores Information
 date: '2020-07-16'
 categories: ['kubernetes', 'devops']
-keywords: ['kubernetes', 'devops', 'overview', 'series', 'series', 'part_6', 'volume']
+keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_6', 'volume']
 slug: kubernetes-volume
 cover: './img/kubernetes.png'
 type: 'BlogPost'
@@ -18,7 +18,7 @@ __Please review the previous parts of this series for better understanding:__
 - [Kubernetes Service](https://codeanit.com/posts/kubernetes-services)
 - [Kubernetes Controller](https://codeanit.com/posts/kubernetes-controllers)
 
-__This is the sixth part of the Kubernetes series. In this part try to add more insights into Kubernetes `Volume`__
+__This is the sixth part of the Kubernetes series. In this part I will try to add more insights into Kubernetes `Volume`__
 
 # Storage Management
 Kubernetes stores information 
