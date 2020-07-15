@@ -4,7 +4,7 @@ title: Kubernetes Controller
 subtitle: Understanding Controllers In Depth
 date: '2020-07-15'
 categories: ['kubernetes', 'devops']
-keywords: ['kubernetes', 'devops', 'overview', ''series', 'part_5', 'controllers']
+keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_5', 'controllers']
 slug: kubernetes-controllers
 cover: './img/kubernetes.png'
 type: 'BlogPost'

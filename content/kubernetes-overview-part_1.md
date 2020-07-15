@@ -4,7 +4,7 @@ title: Kubernetes Overview
 subtitle: Understanding the overview of Kubernetes
 date: '2020-07-01'
 categories: ['kubernetes', 'devops']
-keywords: ['kubernetes', 'devops', 'overview', 'series', 'series', 'part_1', 'overview']
+keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_1']
 slug: kubernetes-overview
 cover: './img/kubernetes.png'
 type: 'BlogPost'
