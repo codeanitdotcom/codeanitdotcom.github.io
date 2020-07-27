@@ -13,11 +13,11 @@ type: 'BlogPost'
  
  
 ### Background
-In my quest of searching for the next opportunity and in the process of preparing technical interviews, I received a surprise code challenge invitation from Google on July 26, 2020. After accepting the invitation, I was redirected to https://foobar.withgoogle.com.
+I received a surprise code challenge invitation from Google on July 26, 2020. After accepting the invitation, I was redirected to https://foobar.withgoogle.com where I completed my first challenge.
  
-I am going to record my experience with the code challenge experience.
- 
- 
+In this post I will share my experience of solving the challenge.
+
+  
 ### The Problem: Caesar Cipher Decryption
 Decrypt a code where every lowercase letter [a..z] is replaced with the corresponding one in [z..a], while every other character (including uppercase letters and punctuation) is left untouched. That is, 'a' becomes 'z', 'b' becomes 'y', 'c' becomes 'x', etc.  For instance, the word "vmxibkgrlm", when decoded, would become "encryption".
  
