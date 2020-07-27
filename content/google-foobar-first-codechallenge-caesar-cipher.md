@@ -15,7 +15,7 @@ type: 'BlogPost'
 ### Background
 I received a surprise code challenge invitation from Google on July 26, 2020. After accepting the invitation, I was redirected to https://foobar.withgoogle.com where I completed my first challenge.
  
-In this post I will share my experience of solving the challenge.
+In this post I will share my experience solving the challenge.
 
   
 ### The Problem: Caesar Cipher Decryption
