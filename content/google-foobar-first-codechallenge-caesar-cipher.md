@@ -1,5 +1,4 @@
 ---
- 
 title: Google FooBar First Challenge
 subtitle: Solving Caesar Cipher
 date: '2020-07-19'
@@ -8,254 +7,187 @@ keywords: ['google', 'challenge', 'series', 'cipher', 'first', 'caesar']
 slug: google-foobar-first-challenge-caesar-cipher
 cover: './img/google-foobar-first-challenge-solved.png'
 type: 'BlogPost'
- 
 ---
  
+In this post I will share my experience solving the first `Google FooBar Challenge`.
  
-### Background
-I received a surprise code challenge invitation from Google on July 26, 2020. After accepting the invitation, I was redirected to https://foobar.withgoogle.com where I completed my first challenge.
+I received a surprise code challenge invitation from Google on July 26, 2020 while doing some search on Google. I had no previous idea about it, frankly never heard of it. I accepted the invitation and I was redirected to [FooBar](https://foobar.withgoogle.com). After log in, a `CLI Interface` with the instructions about the challenge and how to request a challenge was provided. The challenge had to be solved within 2 days.
  
-In this post I will share my experience solving the challenge.
-
-  
-### The Problem: Caesar Cipher Decryption
+ ### The Challenge
 Decrypt a code where every lowercase letter [a..z] is replaced with the corresponding one in [z..a], while every other character (including uppercase letters and punctuation) is left untouched. That is, 'a' becomes 'z', 'b' becomes 'y', 'c' becomes 'x', etc.  For instance, the word "vmxibkgrlm", when decoded, would become "encryption".
  
-There was some limitation to execution time and the external Java library usage environment provided was default Java Runtime Environment (JRE) 8.
- 
- 
-### What is Caesar Cipher?
-A `Cipher` is a method for encrypting a message, intending to make it less readable. As for the `Caesar Cipher`, it's a substitution cipher that transforms a message by shifting its letters by a given offset.
- 
+__Constraints__
+- Java Runtime Environment(JRE) 8.
+- Limited execution time.
+- Prohibit usage of third-party libraries.
+- Parallel procession not allowed.
+- Character limit to around 3000 (I don’t remember exactly).
  
 ### Initial Thoughts
-After going through the problem and some analysis, the rough idea I could come up with as a part of the solution was manipulating the ASCII value of the letters. Addition and subtraction of numeric value of numbers should do the trick but at this point I did not think of `Caesar Cipher` at all. Implementing the initial idea to anything concrete was taking some time so I went with the simplest solution that I could work out.
+The rough idea I could come up after the analysis was:
+- Manipulation of the ASCII value of the letters
+- Simple maths, addition/subtraction, on numeric value of letters
  
+Since converting this idea to a concrete algorithm took time, I moved to another solution.
  
 ### First Attempt
-To solve the problem I needed a data structure to keep a map of the encryption and easily access the decrypted value. `HashMap` was the best fit. The other part of the solution required a data structure to store the decrypted characters as a `String`. Although `Character Array` would have been the ideal way, `StringBuilder` with `Java 8` `SteamAPI` was the quickest option that did the trick. Hence, I went with the implementation built based on these base data types. The rough solution did the job and ran successfully at my local but sadly it did not pass the challenge tests.
- 
+The next simplest design for the solution I could come up with consisted of the following data structures:
+- `HashMap` to store the entire `a` to `z` encryption for easy access of decrypted letters.
+- `StringBuilder` to store the deciphered text.
+-  Use `Java 8` new method `String.chars()` API which returns a stream of `int` (IntStream) that represents the character codes.
 ```java
 public static String solnWithStrBuilder(String x) {
-   StringBuilder stb = new StringBuilder();
-   x.chars().forEach(i -> stb.append(decrypt(i)));
-   return stb.toString();
+  StringBuilder stb = new StringBuilder();
+  x.chars().forEach(i -> stb.append(decrypt(i)));
+  return stb.toString();
 }
 public static char decrypt(int encryptedVal) {
-   if ( encryptedVal >= 97 && encryptedVal <= 122) {
-       char encodedChar;
-       Map<Integer, Character> decryptKey = new HashMap<>();
-       for (int i = 122, j = 97; i >= 97; i--, j++) {
-           encodedChar = (char) i;
-           decryptKey.put(j, encodedChar);
-       }
-       return decryptKey.get(encryptedVal);
-   }
-   else return (char)encryptedVal;
+  if ( encryptedVal >= 97 && encryptedVal <= 122) {
+      char encodedChar;
+      Map<Integer, Character> decryptKey = new HashMap<>();
+      for (int i = 122, j = 97; i >= 97; i--, j++) {
+          encodedChar = (char) i;
+          decryptKey.put(j, encodedChar);
+      }
+      return decryptKey.get(encryptedVal);
+  }
+  else return (char)encryptedVal;
 }
 ```
- 
- 
+The implementation provided desired output in the local environment but it failed to pass the tests.
+
 ### Second Iteration
-I reflected back on the limitations. I knew a cheaper data structure, `Character Array`, could have done the job instead of `StringBuilder` class. I thought that might be the reason that the solution failed to fulfill the criteria, so I refactored the code replacing StringBuilder with a simple Character Array. But this solution also failed to pass any of the tests.
- 
-At this point I was getting a little bit frustrated because the errors were not thrown back properly. I was not sure what failed. To be honest, I had lost interest after one hour of trials and gave up. I needed to prepare for interviews and I went back to my previous way, learning basics and solving challenges from different sources.
- 
+I reflected back on the constraints and refactored the code to use more primitive data structure:
+- Replaced `StringBuilder` with `Character Array`. 
 ```java
 public static String solnWithArray(String encryptedText) {
-   char[] encryptedCharArr = new char[encryptedText.length()];
-   Map<Integer, Character> decryptKey = new HashMap<>();
-   char encodedChar;
- 
-   for (int i = 122, j = 97; i >= 97; i--, j++) {
-       encodedChar = (char) i;
-       decryptKey.put(j, encodedChar);
-   }
- 
-   for (int i = 0; i < encryptedText.length(); i++) {
-       char encryptedVal = encryptedText.charAt(i);
-       if ( encryptedVal >= 97 && encryptedVal <= 122) {
-           encryptedCharArr[i] = decryptKey.get((int)encryptedVal);
- 
-       } else encryptedCharArr[i] = encryptedVal;
-   }
- 
-   return new String(encryptedCharArr);
+  char[] encryptedCharArr = new char[encryptedText.length()];
+  Map<Integer, Character> decryptKey = new HashMap<>();
+  char encodedChar;
+  for (int i = 122, j = 97; i >= 97; i--, j++) {
+      encodedChar = (char) i;
+      decryptKey.put(j, encodedChar);
+  }
+  for (int i = 0; i < encryptedText.length(); i++) {
+      char encryptedVal = encryptedText.charAt(i);
+      if ( encryptedVal >= 97 && encryptedVal <= 122) {
+          encryptedCharArr[i] = decryptKey.get((int)encryptedVal);
+      } else encryptedCharArr[i] = encryptedVal;
+  }
+  return new String(encryptedCharArr);
 }
 ```
- 
+But again the solution did not pass!
+At this point I got getting a little bit frustrated because there were no proper errors thrown. The output was just a list of failed tests.
+I lost interest after around an hour and I went back to my previous preparation method, solving challenges from other sources.
  
 ### Third Iteration
-I wanted to solve the problem and came back to it again with less than 3 hours left to complete the other day.
+The next day I went back to the challenge with around 3 hours remaining. To make sure the time spent here would be worthwhile, I did some search to know more about the challenge. Only then I realized that the challenge was `invitation only`, and was used by Google for recruitment. Those were good enough reasons for me to continue, but then I was seriously running out of time.
  
-As I had never participated in `Google FooBar Challenge`, and even never heard of it, I wanted to know more as I did not want to waste more time if there would be no value in participating in the event, and I needed to continue my preparation. So after some search, I knew more about the challenge and that it was an invitation only and used by Google for recruitment. It added more motivation to solve the problem but then I was running out of time.
+Then I searched for similar problems and solutions to find answers to these questions:
+- How to encrypt a letter by another?
+- What are the standard encryption algorithms?
  
-I reflected back on the problem statement and the constraints again. As I knew that there would be other ASCII based optimum solutions which might satisfy the conditions, I did some more research on ways to encrypt letters with other letters and other standard encryption processes. It led to the `Cesar Cipher` which was the term that I was looking for. After digging more into it, I found a simple example by [Baeldung.com](https://www.baeldung.com/java-caesar-cipher) which laid the foundation to my initial ASCII based solution.
- 
+A simple example by [Baeldung](https://www.baeldung.com/java-caesar-cipher) answered my queries. 
 ```java
 StringBuilder result = new StringBuilder();
 for (char character : message.toCharArray()) {
-       if (character != ' ') {
-           int originalAlphabetPosition = character - 'a';
-           int newAlphabetPosition = (originalAlphabetPosition + offset) % 26;
-           char newCharacter = (char) ('a' + newAlphabetPosition);
-           result.append(newCharacter);
-       } else {
-           result.append(character);
-       }
+      if (character != ' ') {
+          int originalAlphabetPosition = character - 'a';
+          int newAlphabetPosition = (originalAlphabetPosition + offset) % 26;
+          char newCharacter = (char) ('a' + newAlphabetPosition);
+          result.append(newCharacter);
+      } else {
+          result.append(character);
+      }
 }
-   
+ 
 return result;
-```
+``` 
+
+`“Any fool can know. The point is to understand.” - Albert Einstein`
+
+The standard encryption algorithm used was `Caesar Cipher`. Knowing that the encryption was `Caesar Cipher`, I wanted to understand more which led to [Cryptography](https://github.com/codeanit/til/issues/43), [Cipher](https://github.com/codeanit/til/issues/107) and [more](https://github.com/codeanit/til/issues). Keeping limited time to mind, I skimmed the contents.
  
-Baeldung's example `encrypts` letters. It did not `decrypt`. Letter `a` was used as the base for the encryption process. Understanding the encryption process was very important to successfully decrypt the cipher. So based on this framework I created an encryption system that generates the cipher which is our problem.
+`A **Cipher** is a method for encrypting a message, intending to make it less readable. **Caesar Cipher** is a substitution cipher that transforms a message by shifting its letters by a given offset.`
  
+Baeldung's post also made me realize that understanding of the encryption process was important to decipher. Therefore, based on Baeldung's framework, I created an encryption system that generated the cipher from the challenge.
 ```java
 public static String encrypt(String textToEncrypt) {
-   StringBuilder result = new StringBuilder();
- 
-   for (char character : textToEncrypt.toCharArray()) {
- 
-       if ( (int)character >= 97 && (int)character <= 122 ) {
-           int originalAlphabetPosition = character - 'z';
-           int newAlphabetPosition = ( originalAlphabetPosition + 25 ) % 26;
-           result.append((char) ('z' - newAlphabetPosition));
- 
-       } else {
-           result.append(character);
-       }
-   }
- 
-   return new String(result);
+  StringBuilder result = new StringBuilder();
+  for (char character : textToEncrypt.toCharArray()) {
+      if ( (int)character >= 97 && (int)character <= 122 ) {
+          int originalAlphabetPosition = character - 'z';
+          int newAlphabetPosition = ( originalAlphabetPosition + 25 ) % 26;
+          result.append((char) ('z' - newAlphabetPosition));
+      } else {
+          result.append(character);
+      }
+  }
+  return new String(result);
 }
 ```
  
-Then creating a decryption mechanism was some maths and common sense. Then again, the solution failed.
- 
+After generating the exact cipher, It was pretty much easier to write a program to decipher.
 ```java
 public static String solutionWithOffset(String encryptedText) {
-   StringBuilder result = new StringBuilder();
- 
-   for (char character : encryptedText.toCharArray()) {
- 
-       if ( (int)character >= 97 && (int)character <= 122 ) {
-           int originalAlphabetPosition = character - 'z';
-           int newAlphabetPosition = (originalAlphabetPosition + 25 ) % 26;
-           result.append((char) ('z' + newAlphabetPosition));
- 
-       } else {
-           result.append(character);
-       }
-   }
- 
-   return new String(result);
+  StringBuilder result = new StringBuilder();
+  for (char character : encryptedText.toCharArray()) {
+      if ( (int)character >= 97 && (int)character <= 122 ) {
+          int originalAlphabetPosition = character - 'z';
+          int newAlphabetPosition = (originalAlphabetPosition + 25 ) % 26;
+          result.append((char) ('z' + newAlphabetPosition));
+      } else {
+          result.append(character);
+      }
+  }
+  return new String(result);
 }
 ```
+I submitted the solution then again it failed.
  
+__Time on the clock less than 10mins left!__
  
 ### Accepted Solution
-The default example had implemented StringBuilder class which I thought was the reason for the failed tests. I replaced StringBuilder with Array implementation and the solution passed all the tests. Yay!
- 
+Reflected back on the constraints, and refactored the code
+- Replaced `StringBuilder` with `Character Array`.
 ```java
 public static String solution(String x) {
-   int strLength = x.length();
-   char[] encryptedCharArr = new char[strLength];
- 
-   for (int i = 0; i < strLength; i++) {
-       int character = x.charAt(i);
- 
-       if ( character >= 97 && character <= 122 ) {
-           int originalAlphabetPosition = character - 'z';
-           int newAlphabetPosition = (originalAlphabetPosition + 25 ) % 26;
-           encryptedCharArr[i]  = (char) ('z' + newAlphabetPosition);
- 
-       } else {
-           encryptedCharArr[i] = (char)character;
-       }
-   }
- 
-   return new String(encryptedCharArr);
+  int strLength = x.length();
+  char[] encryptedCharArr = new char[strLength];
+  for (int i = 0; i < strLength; i++) {
+      int character = x.charAt(i);
+      if ( character >= 97 && character <= 122 ) {
+          int originalAlphabetPosition = character - 'z';
+          int newAlphabetPosition = (originalAlphabetPosition + 25 ) % 26;
+          encryptedCharArr[i]  = (char) ('z' + newAlphabetPosition);
+      } else {
+          encryptedCharArr[i] = (char)character;
+      }
+  }
+  return new String(encryptedCharArr);
 }
 ```
+__YAY!!! Solution Passed All Tests!__
  
- 
-### Further Refactoring, Test Harness
-After submitting the solution I reviewed the solution and the recalled overall process. Being a firm believer of `Test Driven Development (TDD)`, I wanted safety to keep the behaviours of the solution the same, I wrote simple `Unit Tests`. The unit tests did not need to be extensive covering all edge cases; neither should have many use cases covered as it had already passed the test cases of Google. I just needed something to preserve what was functional in my local.
- 
-```java
-class CaesarCipherTest {
- 
-   String result = "wrw blf hvv ozhg mrtsg'h vkrhlwv?";
-   String expected = "did you see last night's episode?";
- 
-   @Test
-   void solution() {
-       String actual = CaesarCipher.solution(result);
-       Assertions.assertEquals(expected, actual);
-   }
- 
-   @Test
-   void submittedSolution() {
-       String actual = CaesarCipher.submittedSolution(result);
-       Assertions.assertEquals(expected, actual);
-   }
- 
-   @Test
-   void encrypt() {
-       String expected = "wrw blf hvv ozhg mrtsg'h vkrhlwv?";
-       String plainText = "did you see last night's episode?";
-       result = CaesarCipher.encrypt(plainText);
-       Assertions.assertEquals(expected, result);
-   }
- 
-   @Test
-   void solnWithArray() {
-       Assertions.assertEquals( expected, CaesarCipher.solnWithArray(result) );
-   }
- 
-   @Test
-   void solnWithStrBuilder() {
-       Assertions.assertEquals(expected, CaesarCipher.solnWithArray(result) );
-   }
- 
-   @Test
-   void decrypt() {
-       char expected = 'z';
-       char result= 'a';
-       Assertions.assertEquals( expected , CaesarCipher.decrypt(result) );
-   }
-}
-```
- 
-Now with the protection of the tests, I refactored the submitted solution.
- 
-```java
-public static String solution(String cipher) {
-       int cipherLen = cipher.length();
-       char[] decryptedCharArr = new char[cipherLen];
- 
-       for (int i = 0; i < cipherLen; i++) {
-           int character = cipher.charAt(i);
- 
-           if ( character >= 97 && character <= 122 )
-               decryptedCharArr[i]  = (char) ( 'z' - ( ( character + 7) % 26 ));
-           else
-               decryptedCharArr[i] = (char)character;
-       }
- 
-       return new String(decryptedCharArr);
-}
-```
- 
+__Time on the clock less than 2mins__
+
 ### Review
-`Google FooBar Code Challenge` was fun. Sometimes `the unknown` leads to better results as if there had been clear test case failure outputs, It would not have pushed myself to think and rethink more. On the other hand, I would have found the solution straight forward but problems in real life are also abstract. The constraints and the test cases pushed me to use optimum data structures and algorithms. 
+The next day I reviewed the solution and recalled the overall process. Phew! It was a close call.
+ 
+I wanted to refactor the submitted code as had I submitted in a hurry. Before refactoring, I wrote `Unit Tests` to make sure nothing is broken after the changes are made. These tests did not need to be extensive covering all edge cases; neither should have many use cases covered as it had already passed the test cases of Google.
+ 
+Google's first code challenge was fun, I turned it to an exhilarating moment :joy:.
  
 Previously, I had an interview with Google in July 2019. It was more of a casual talk I had with a nice lady who wanted to know a bit of me and to see if I fit the available role at a certain location. Unfortunately, it did not work out.
  
-I am grateful to both opportunities but I am enjoying this experience more that may be because I'm more of a `code person`.
+I am grateful for both opportunities but I must say I have enjoyed this experience more may be because I'm more of a code person.
  
-Thank you Google!
+__Thank you Google!__
  
  
 If code is a better language to you then please find more at [Github](https://github.com/JavaCheatsheet/codechallenge).
  
+ 
+
+
