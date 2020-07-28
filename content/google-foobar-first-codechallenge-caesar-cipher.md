@@ -184,7 +184,7 @@ __Yay! All Tests Passed. Time <2mins.__
 ### Review
 The next day I reviewed the solution and recalled the overall process. Phew! It was a close call.
  
-I wanted to refactor the submitted code as it was done in a hurry. And prior to refactoring, I wrote `Unit Tests` to make sure that all the methods will work as before. Those tests did not needed to be extensive covering all edge cases; neither should have many use cases, the solution had already passed Google's test cases.
+I wanted to refactor the submitted code as it was done in a hurry. And prior to refactoring, I wrote `Unit Tests` to make sure that all the methods will work as before. Those tests did not need to be extensive covering all edge cases; neither should have many use cases, the solution had already passed Google's test cases.
  
 Previously, I had an interview with Google in July 2019. It was more of a casual talk I had with a nice lady to see if I fit the available role at a certain location. Unfortunately, it did not work out.
  
