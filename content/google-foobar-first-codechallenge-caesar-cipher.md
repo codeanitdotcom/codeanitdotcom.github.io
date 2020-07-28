@@ -257,5 +257,5 @@ I am grateful to both opportunities but I am enjoying this experience more that 
 Thank you Google!
  
  
-If you code is a better language to you then please find more at [Github](https://github.com/JavaCheatsheet/codechallenge).
+If code is a better language to you then please find more at [Github](https://github.com/JavaCheatsheet/codechallenge).
  
