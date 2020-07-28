@@ -15,7 +15,7 @@ type: 'BlogPost'
 ### Background
 I received a surprise code challenge invitation from Google on July 26, 2020. After accepting the invitation, I was redirected to https://foobar.withgoogle.com where I completed my first challenge.
  
-In this post I will share my experience of solving the challenge.
+In this post I will share my experience solving the challenge.
 
   
 ### The Problem: Caesar Cipher Decryption
@@ -257,5 +257,5 @@ I am grateful to both opportunities but I am enjoying this experience more that 
 Thank you Google!
  
  
-If you code is a better language to you then please find more at [Github](https://github.com/JavaCheatsheet/codechallenge).
+If code is a better language to you then please find more at [Github](https://github.com/JavaCheatsheet/codechallenge).
  
