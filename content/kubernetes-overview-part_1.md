@@ -1,13 +1,13 @@
 ---
 
 title: Kubernetes Overview
-subtitle: Understanding the overview of Kubernetes
+subtitle: The easiest way to visualize components and how they work
 date: '2020-07-01'
 categories: ['kubernetes', 'devops']
 keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_1']
 slug: kubernetes-overview
-cover: './img/kubernetes.png'
-type: 'BlogPost'
+cover: './img/kubernetes-banner.png'
+type: 'Blog'
 
 ---
 
@@ -65,4 +65,4 @@ Traditionally, applications used to run on one or more `Physical Servers`. The m
 Although it has simplified managing containerized distributed application, it is recommended to understand it very well befor using it production.
 
 
-__I will share about [Kubernetes Objects](https://codeanit.com/posts/kubernetes-objects) next.__
+__I will share about [Kubernetes Objects](https://codeanit.com/blog/kubernetes-objects) next.__

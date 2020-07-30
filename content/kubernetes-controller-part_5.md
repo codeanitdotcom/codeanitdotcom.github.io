@@ -1,21 +1,21 @@
 ---
 
 title: Kubernetes Controller
-subtitle: Understanding Controllers In Depth
+subtitle: The brain of the system that keeps track of all the other parts
 date: '2020-07-15'
 categories: ['kubernetes', 'devops']
 keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_5', 'controllers']
 slug: kubernetes-controllers
-cover: './img/kubernetes.png'
+cover: './img/kubernetes-overview.png'
 type: 'BlogPost'
 
 ---
 
-__Please review the previous parts of this series for better understanding:__ 
-- [Kuberenetes Overview](https://codeanit.com/posts/kubernetes-overview)
-- [Kubernetes Objects](https://codeanit.com/posts/kubernetes-objects)
-- [Kubernetes Components](https://codeanit.com/posts/kubernetes-components)
-- [Kubernetes Service](https://codeanit.com/posts/kubernetes-services)
+__Review previous parts of this series for better understanding:__ 
+- [Kuberenetes Overview](https://codeanit.com/blog/kubernetes-overview)
+- [Kubernetes Objects](https://codeanit.com/blog/kubernetes-objects)
+- [Kubernetes Components](https://codeanit.com/blog/kubernetes-components)
+- [Kubernetes Service](https://codeanit.com/blog/kubernetes-services)
 
 __This is fifth part of the Kubernetes series. In this part I will try to add more insights into Kubernetes `Controller`.__
 
@@ -56,4 +56,4 @@ Build on jobs,
 **Controller** are the essential parts of Kubernetes which makes `Pods` management easy Kubernetes.
 
 
-__I will share about [Kubernetes Volume](https://codeanit.com/posts/kubernetes-volume) next.__
+__I will share about [Kubernetes Volume](https://codeanit.com/blog/kubernetes-volume) next.__

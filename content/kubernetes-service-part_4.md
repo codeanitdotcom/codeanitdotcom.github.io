@@ -1,29 +1,29 @@
 ---
 
 title: Kubernetes Service
-subtitle: Understanding Kubernetes Services
+subtitle: An important component that manages routes and containers
 date: '2020-07-14'
 categories: ['kubernetes', 'devops']
 keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_4', 'services']
 slug: kubernetes-services
-cover: './img/kubernetes.png'
-type: 'BlogPost'
+cover: './img/kubernetes-service.png'
+type: 'Blog'
 
 ---
 
-__Please review the previous parts of this series for better understanding:__ 
-- [Kuberenetes Overview](https://codeanit.com/posts/kubernetes-overview)
-- [Kubernetes Objects](https://codeanit.com/posts/kubernetes-objects)
-- [Kubernetes Components](https://codeanit.com/posts/kubernetes-components)
+__Review previous parts of this series for better understanding:__ 
+- [Kuberenetes Overview](https://codeanit.com/blog/kubernetes-overview)
+- [Kubernetes Objects](https://codeanit.com/blog/kubernetes-objects)
+- [Kubernetes Components](https://codeanit.com/blog/kubernetes-components)
 
 __This is fourth part of the Kubernetes series. In this part I will try to add more insights into Kubernetes `Service`.__
 
 
 # What is a Service in Kubernetes? 
-A `Service` groups `Pods` together that perform the same function as a single entity. It keeps track of containers in the Pods and routes to the Containers for internal and external access. A Service’s IP address remains stable regardless of changes to the Pods it routes to, which makes it easy to gain discoverability and can simplify Containers designs. By default, Services are only available using an internally routable IP address, they can be made available outside of the Cluster by choosing one of several strategies.
+A `Service` groups `Pods` together that perform the same function as a single entity. It keeps track of containers in the Pods and routes to the containers for internal and external access. A Service’s IP address remains stable regardless of changes to the Pods it routes to, which makes it easy to gain discoverability and can simplify containers designs. By default, Services are only available using an internally routable IP address, they can be made available outside of the Cluster by choosing one of several strategies.
 
 # Types Of Services
-There are 4 types of Kubernetes Services, specified by the type `field` in the `Service Configuration File`:
+There are 4 types of Services, specified by the type `field` in the `Service Configuration File`:
 
 - `ClusterIP` is the default, which grants the Service a stable internal IP accessible from anywhere inside of the cluster.
 
@@ -39,4 +39,4 @@ Creating LoadBalancer for each Deployment running in the cluster will create a n
 **Services** are the essential parts of Kubernetes which provides secure communication mechanism with in the Kubernetes infrastructure.
 
 
-__I will share about [Kubernetes Controller](https://codeanit.com/posts/kubernetes-controllers) next.__
+__I will share about [Kubernetes Controller](https://codeanit.com/blog/kubernetes-controllers) next.__

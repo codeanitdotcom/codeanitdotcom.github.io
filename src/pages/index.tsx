@@ -1,29 +1,13 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
-
-import { Flex, Box, Heading, Avatar } from '@primer/components'
-import { MegaphoneIcon } from "@primer/octicons-react";
-
+import { Box, Heading, Grid, Avatar } from '@primer/components'
 import Layout from '../layouts';
 import Seo from '../components/Seo';
 import styled from '../utils/styled';
 // import SearchBox from '../components/SearchBox';
+import { useTheme } from '../context/ThemeContext';
 
-const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
 
 export const pageQuery = graphql`
   query IndexAPageQuery {
@@ -42,18 +26,6 @@ export const pageQuery = graphql`
             title
             subtitle
             date
-            cover {
-              childImageSharp {
-                fluid(
-                  maxWidth: 1050
-                  maxHeight: 900
-                  quality: 100
-                  cropFocus: ENTROPY
-                ) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }
@@ -89,11 +61,12 @@ interface Props {
   };
 }
 
-const IndexPage = ({ data, location }: Props) => {
-  const [showSearch, setShowSearch] = React.useState(location.search !== '');
-  let year = 0;
-  const headerProps = {};
 
+const IndexPage = ({ data, location }: Props) => {
+  // const [showSearch, setShowSearch] = React.useState(location.search !== '');
+  const headerProps = {};
+  const theme = useTheme();
+  
   return (
     <Layout header={true} footer={true} headerProps={headerProps}>
       {() => {
@@ -101,47 +74,43 @@ const IndexPage = ({ data, location }: Props) => {
         return (
           <MainBlock>
             <Seo />
-            <Box>
-              <Heading>Hello, World!</Heading>
-              <br/>
-              <Heading>I am Anit Shrestha Manandhar.</Heading>
-              <br/>
-              <p>
-                I am an experienced software engineer who has mostly worked in the backend development.
-                Connect with me at <a target='_blank' href='https://www.linkedin.com/in/anit'> Linkedin</a> or <a target='_blank' href='https://twitter.com/codeanit'>Twitter</a>. 
-              </p>
-            </Box> 
-            <p><MegaphoneIcon size={24} /> This website is still in progress and opensourced at <a  href='https://github.com/codeanit-website/website'>Github</a></p>
-            
-            <Heading>Articles</Heading>  
+            <br/>
+            <br/>
+            <br/>
+            <Heading fontSize={33} mb={6}>Hello, World!</Heading>
+            <Heading fontSize={57} mb={6}>
+              <Link style={{ textDecoration: `none`, color: theme.dark ? `white` : `black`}} to={`/about`}>I am Anit Shrestha Manandhar.</Link>
+            </Heading>
+            <Heading fontSize={24} mb={6}>10+ Years Experienced Hands-on Code Software Engineer.</Heading>
+            <Heading fontSize={18} mb={12}>I provide software development services.</Heading>
+            <br/>
+            <br/>
+            <br/>
+            {/* Blog */}
+            <Heading fontSize={57} mb={1}>Latest Blogs</Heading>
             <List data-id="article-list">
+              <Grid gridTemplateColumns="repeat(2, auto)" gridGap={1  }>
               {data.allMdx.edges.map(({ node }) => {
                 return (
-                  
-                  <li key={node.frontmatter.slug}>
-                    <Link
-                      style={{ textDecoration: `none` }}
-                      to={`/posts/${node.frontmatter.slug}`}
-                    >
-                      <Block data-testid="article-link">
-                        <DateBlock>
-                          {`${
-                            MONTHS[new Date(node.frontmatter.date).getMonth()]
-                          } ${new Date(node.frontmatter.date).getDate()}`}
-                        </DateBlock>
-                        <TitleBlock>{node.frontmatter.title}</TitleBlock>
-                      </Block>
-                    </Link>
-                  </li>
+                  <Box p={1}>
+                    <li key={node.frontmatter.slug}>
+                      <Link style={{ textDecoration: `none`, color: theme.dark ? `white` : `black`}} to={`/blog/${node.frontmatter.slug}`}>
+                        <Heading fontSize={4} mb={0}>{node.frontmatter.title}</Heading>
+                      </Link>
+                      <Heading fontSize={1} mb={0}>{node.frontmatter.subtitle}</Heading>
+                      <Heading fontSize={0} mb={-3}>{node.timeToRead}min read</Heading>
+                    </li>
+                </Box>
                 );
               })}
-            </List>                                                                   
+              </Grid>
+            </List>                                                       
           </MainBlock>
-        );
+        )
       }}
     </Layout>
-  );
-};
+  )
+}
 
 const MainBlock = styled('div')`
   @media (max-width: 600px) {
@@ -151,59 +120,11 @@ const MainBlock = styled('div')`
   padding-left: 76px;
 `;
 
-const Block = styled('div')`
-  @media (max-width: 600px) {
-    height: 100px;
-  }
-  align-items: center;
-  padding-left: 15px;
-  border-radius: 2px;
-
-  height: 60px;
-  box-shadow: none;
-
-  color: ${p => p.theme.fontColor};
-  transition ${p => p.theme.transitionTime / 4}s;
-
-  div:first-of-type {
-    margin-right: 40px;
-  }
-
-  &:hover {
-    background-color: ${p => p.theme.foregroundColor};
-    box-shadow: ${p => p.theme.boxShadow};
-    color: ${p => p.theme.blue};
-  }
-`;
-
-// const YearBlock = styled('div')`
-//   padding: 30px 15px;
-//   font-weight: 600;
-//   font-size: 18px;
-// `;
-
-const DateBlock = styled('div')`
-  font-size: 14px;
-  font-weight: 500;
-  color: #8a8a90;
-  min-width: 50px;
-`;
-
-const TitleBlock = styled('div')`
-  font-weight: 500;
-  transition ${p => p.theme.transitionTime / 2}s;
-`;
 
 const List = styled('ul')`
-  margin-left: -10px;
-
+  margin-left: -3px;
   li {
     list-style: none;
-  }
-
-  h3 {
-    color: ${p => p.theme.fontColor};
-    margin-bottom: 10px;
   }
 `;
 

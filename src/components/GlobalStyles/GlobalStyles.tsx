@@ -25,7 +25,7 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
 
       .codeanit-light {
         --codeanit-colors-brand: #5184f9;
-        --codeanit-colors-body-0: #f6f7f8;
+        --codeanit-colors-body-0: #FFF;
         --codeanit-colors-body-1: rgba(217, 230, 247, 0.55);
         --codeanit-colors-body-2: rgba(236, 236, 236, 0.8);
         --codeanit-colors-typeface-0: #2b2d3e;
@@ -45,7 +45,7 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
 
       .isCurrent {
         a {
-          color: ${props.theme.colors.blue} !important;
+          color: ${props.theme.white} !important;
         }
       }
     `}

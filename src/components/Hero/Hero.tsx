@@ -43,15 +43,11 @@ const HeroSubtitle = styled.h3``;
 const HeroTitle = styled.h1``;
 
 const HeroWrapper = styled.div`
-  @media (max-width: 700px) {
-    padding: 200px 0px 30px 0px;
+  @media (max-width: 600px) {
+    padding-left: 15px;
   }
 
-  margin: 0 auto;
-  max-width: 700px;
-  align-items: center;
-  color: ${(props) => props.theme.fontColor};
-  padding-top: 200px;
+  padding-left: 76px;
 `;
 
 class Hero extends React.Component<{ id?: string }> {

@@ -1,4 +1,15 @@
-var path = require("path");
+/**
+ * 
+ * 
+ * Gatsby's Config APIs is implemented in this file.
+ * 
+ * See: https://www.gatsbyjs.org/docs/gatsby-config
+ * 
+ * 
+ */
+
+
+const path = require("path");
 
 module.exports = {
   siteMetadata: {
@@ -10,10 +21,10 @@ module.exports = {
       'Technical Articles',
       'Programming Blog',
     ],
-    title: "Technical Blog by Anit Shrestha Manandhar.",
+    title: "Anit Shrestha Manandhar | Software Development Service | Blog",
     titleAlt: 'codeanit.com',
     description:
-      "I am not an expert, I code for a living. I have some experience building software systems that solves the problems. Interested in mind, body and technology. Here are few things I learn and share my view about tech.",
+      "Anit is a hands-on code experienced software engineer who blogs and provides software development service.",
     url: 'https://codeanit.com', // Site domain without trailing slash
     siteUrl: 'https://codeanit.com/', // url + pathPrefix
     siteLanguage: 'en', // Language Tag on <html> element
@@ -48,7 +59,7 @@ module.exports = {
             subtitle: node => node.frontmatter.subtitle,
             content: node => node.rawBody,
             date: node => node.frontmatter.date,
-            slug: node => `/posts/${node.frontmatter.slug}`,
+            slug: node => `/blog/${node.frontmatter.slug}`,
             keywords: node => node.frontmatter.keywords,
           },
         },
@@ -58,7 +69,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
+        name: `blog`,
         path: `${__dirname}/content/`,
       },
     },
@@ -151,12 +162,12 @@ module.exports = {
         pathToConfigModule: './src/utils/typography',
       },
     },
-    {
-      resolve: `gatsby-plugin-page-creator`,
-      options: {
-        path: path.resolve(__dirname, `src/pages`),
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-page-creator`,
+    //   options: {
+    //     path: path.resolve(__dirname, `src/pages`),
+    //   },
+    // },
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-twitter',
