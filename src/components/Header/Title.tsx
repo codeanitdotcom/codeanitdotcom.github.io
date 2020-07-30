@@ -7,10 +7,13 @@ import { HeaderContext } from './Context';
 export const TitleWrapper = styled.h3`
   @media (max-width: 900px) {}
 
-  @media (max-width: 600px) {}
+  @media (max-width: 600px) {
+    padding-left: 15px;
+  }
 
   @media (max-width: 300px) {}
-
+  
+  padding-left: 76px;
   display: block;
   overflow: hidden;
   white-space: nowrap;

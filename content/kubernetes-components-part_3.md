@@ -1,19 +1,19 @@
 ---
 
-title: Kubernetes Componets
-subtitle: Understanding Kubernetes Components
+title: Kubernetes Components
+subtitle: A at the building blocks in simple terms for quick understanding
 date: '2020-07-12'
 categories: ['kubernetes', 'devops', 'basics']
 keywords: ['kubernetes', 'devops', 'basics', 'series', 'part_3', 'components']
 slug: kubernetes-components
-cover: './img/kubernetes.png'
-type: 'BlogPost'
+cover: './img/kubernetes-overview.png'
+type: 'Blog'
 
 ---
 
-__Please review the previous parts of this series for better understanding:__ 
-- [Kuberenetes Overview](https://codeanit.com/posts/kubernetes-overview)
-- [Kubernetes Objects](https://codeanit.com/posts/kubernetes-objects)
+__Review previous parts of this series for better understanding:__ 
+- [Kuberenetes Overview](https://codeanit.com/blog/kubernetes-overview)
+- [Kubernetes Objects](https://codeanit.com/blog/kubernetes-objects)
 
 __This is third part of the Kubernetes series. In this part I will try to add more insights into the essential parts  of Kubernetes. I will add more details on the topics in later in the series or there will separate posts as the topics needs.__
 
@@ -70,4 +70,4 @@ Kubernetes includes some internal monitoring tools by default. These resources b
 **Kubernetes** is a large system with many parts functioning as a unit. It has resolved many issues in managing containerized distributed application but before using it in production, it is recommended to understand it very well.
 
 
-__I will share about [Kubernetes Service](https://codeanit.com/posts/kubernetes-services) next.__
+__I will share about [Kubernetes Service](https://codeanit.com/blog/kubernetes-services) next.__

@@ -60,57 +60,38 @@ const Matrix = () => (
   </svg>
 );
 
-const LocalLogo = () => (
-  <svg
-    width="50"
-    height="50"
-    viewBox="0 0 401 401"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g>
-      <circle cx="200.633" cy="200.58" r="200" fill="none" />
-      <rect
-        x="131.283"
-        y="104.174"
-        width="46.5558"
-        height="144.938"
-        rx="23.2779"
-        transform="rotate(26 131.283 104.174)"
-        fill="#fff"
-      />
-      <rect
-        x="231.663"
-        y="109.137"
-        width="46.5558"
-        height="144.938"
-        rx="23.2779"
-        transform="rotate(26 231.663 109.137)"
-        fill="#fff"
-      />
-      <rect
-        x="257.779"
-        y="207.753"
-        width="46.5558"
-        height="68.1965"
-        rx="23.2779"
-        transform="rotate(-30 257.779 207.753)"
-        fill="#fff"
-      />
-    </g>
-  </svg>
+
+const LogoWrapper = styled('div')`
+  height: ${props => props.size}px;
+  width: ${props => props.size}px;
+  transition: ${props => props.theme.transitionTime}s;
+  & > * {
+    transition: ${props => props.theme.transitionTime}s;
+  }
+  svg {
+    height: ${props => props.size}px;
+    width: ${props => props.size}px;
+    path {
+      fill: ${ 
+        props => "FFFFF"};
+    }
+  }
+`;
+
+const Logo = ({ height, width }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width={ width } height={ height }><path fill="FFFFFF" fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg>
 );
 
 const Wrapper = styled('div')`
   width: 1200px;
-  height: 630px;
+  height: 690px;
   position: relative;
-  color: white;
-  background: linear-gradient(90deg, #5284f9 -48.68%, #1b1e21 70.39%), #1b1e21;
+  color: black;
   font-family: 'Helvetica', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top:10px;
 
   & > svg {
     position: absolute;
@@ -123,38 +104,41 @@ const Wrapper = styled('div')`
 `;
 
 const TitleWrapper = styled('div')`
-  margin-top: 110px;
-  width: 730px;
+  margin-top: 10px;
+  width: 800px;
+
   h1 {
-    min-height: 95px;
-    max-height: 95px;
-    font-weight: 500;
-    font-size: 47px;
-    line-height: 60px;
+    min-height: 60px;
+    max-height: 60px;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 3px;
   }
-`;
 
-const InfoWrapper = styled('div')`
-  margin-top: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  h2 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 15px;
+  }
+
   p {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
+    margin-top: 5px;
+    min-height: 21px;
+    max-height: 21px;
+    font-weight: bold;
+    font-size: 21px;
   }
 `;
 
-const PrinterComponent = ({ title }) => (
+const PrinterComponent = ( ogData ) => (
   <Wrapper>
-    <Matrix />
+    <Matrix/>
     <TitleWrapper>
-      <h1>{title}</h1>
-      <InfoWrapper>
-        <LocalLogo />
-        <p>@MaximeHeckel</p>
-      </InfoWrapper>
+    <Logo height='150' width='150' />
+    <h2>{ ogData.subtitle }</h2>
+    <h1>{ ogData.title }</h1>
+    <p>Blog by Anit Shrestha Manandhar</p>
+    <p>codeanit.com/blog/{ogData.slug}</p>
     </TitleWrapper>
   </Wrapper>
 );

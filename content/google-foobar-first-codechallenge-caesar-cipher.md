@@ -6,9 +6,9 @@ categories: ['google', 'challenge', 'series', 'cipher']
 keywords: ['google', 'challenge', 'series', 'cipher', 'first', 'caesar']
 slug: google-foobar-first-challenge-caesar-cipher
 cover: './img/google-foobar-first-challenge-solved.png'
-type: 'BlogPost'
+type: 'Blog'
 ---
- 
+
 In this post I will share my experience solving the first `Google FooBar Challenge`.
 
 While doing some search on Google, I received an invitation to participate in a code challenge by Google. I had no previous idea about it, frankly never heard of it. I accepted the invitation and I was redirected to [FooBar](https://foobar.withgoogle.com). After log in, a `CLI` with the instructions about the challenge and how to request a challenge was provided. The challenge had to be solved within 2 days.

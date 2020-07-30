@@ -1,17 +1,12 @@
-// import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
-import LightDarkSwitcher from '../LightDarkSwitcher';
-import Flex from '../Flex';
-// import styled from '../../utils/styled';
-import { useTheme } from '../../context/ThemeContext';
 import LogoImage from '../Logo';
 import { Logo } from './Logo';
 import { Navigation } from './Navigation';
 import { Title } from './Title';
 import { Wrapper } from './Wrapper';
-import { LinkButton } from '../Button/LinkButton';
-import { Heading } from '@primer/components'
-
+import { Flex, Heading, Link } from '@primer/components'
+import { SwitchTheme } from '../SwitchTheme';
+// import { useTheme } from '../../context/ThemeContext';
 
 // const TwitterIcon = () => (
 //   <svg
@@ -30,8 +25,6 @@ import { Heading } from '@primer/components'
 //     fill: ${(p) => p.theme.blue};
 //   }
 // `;
-
-const noop = () => {};
 
 interface HeaderProps {
   sticky?: boolean;
@@ -64,8 +57,7 @@ export interface MainHeaderProps {
 }
 
 const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
-  const theme = useTheme();
-
+  // const theme = useTheme();
   return (
     <Header
       slim={props.slim}
@@ -73,13 +65,13 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
       collapsableOnScroll={props.collapsableOnScroll}
     >
       <Flex>
-        <Header.Logo
-          alt="codeanit.com logo"
-          aria-label="codeanit.com blog"
-        >
-          <LogoImage />
+        <Header.Logo alt="codeanit.com logo" aria-label="codeanit.com blog">
+          <LogoImage/>
         </Header.Logo>
-        <Heading>anit</Heading>
+
+        {/* <Heading fontSize={6} mb={1}><Link style={{ textDecoration: `none`, color: theme.dark ? `white` : `black`}} to={`/`}>codeanit</Link></Heading> */}
+
+        
       </Flex>
       <Flex>
         {/* <TwitterLinkWrapper>
@@ -100,26 +92,9 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
             </LinkButton>
           </OutboundLink>
         </TwitterLinkWrapper> */}
-
-        {props.themeSwitcher && Object.keys(theme).length > 0 ? (
-          <LinkButton
-            tabIndex={0}
-            onKeyDown={(e) => (e.keyCode === 13 ? theme.toggleDark() : noop)}
-            onClick={theme.toggleDark}
-            aria-label={
-              theme.dark ? 'Activate light mode' : 'Activate dark mode'
-            }
-            title={theme.dark ? 'Activate light mode' : 'Activate dark mode'}
-          >
-            <LightDarkSwitcher
-              aria-pressed="false"
-              data-testid="darkmode-switch"
-              html-for="darkmode-switch"
-              isDark={theme.dark}
-            />
-          </LinkButton>
-        ) : null}
+        <SwitchTheme />
       </Flex>
+      
     </Header>
   );
 };

@@ -41,7 +41,6 @@ const HeaderWrapper = styled.div<StyledHeaderWrapperProps>`
   background: ${(props) => props.theme.backgroundColor};
   transition: ${(props) => props.theme.transitionTime}s;
   width: 100%;
-  // border-top: 6px solid ${(props) => props.theme.blue};
   position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
   z-index: 999;
   ${(props) =>

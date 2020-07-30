@@ -1,27 +1,24 @@
 ---
 
 title: Kubernetes Volume
-subtitle: Understanding How Kubernetes Stores Information
+subtitle: The storage management system
 date: '2020-07-16'
 categories: ['kubernetes', 'devops']
 keywords: ['kubernetes', 'devops', 'overview', 'series', 'part_6', 'volume']
 slug: kubernetes-volume
-cover: './img/kubernetes.png'
-type: 'BlogPost'
+cover: './img/kubernetes-volume.png'
+type: 'Blog'
 
 ---
 
-__Please review the previous parts of this series for better understanding:__ 
-- [Kuberenetes Overview](https://codeanit.com/posts/kubernetes-overview)
-- [Kubernetes Objects](https://codeanit.com/posts/kubernetes-objects)
-- [Kubernetes Components](https://codeanit.com/posts/kubernetes-components)
-- [Kubernetes Service](https://codeanit.com/posts/kubernetes-services)
-- [Kubernetes Controller](https://codeanit.com/posts/kubernetes-controllers)
+__Review previous parts of this series for better understanding:__ 
+- [Kuberenetes Overview](https://codeanit.com/blog/kubernetes-overview)
+- [Kubernetes Objects](https://codeanit.com/blog/kubernetes-objects)
+- [Kubernetes Components](https://codeanit.com/blog/kubernetes-components)
+- [Kubernetes Service](https://codeanit.com/blog/kubernetes-services)
+- [Kubernetes Controller](https://codeanit.com/blog/kubernetes-controllers)
 
 __This is the sixth part of the Kubernetes series. In this part I will try to add more insights into Kubernetes `Volume`__
-
-# Storage Management
-Kubernetes stores information 
 
 # **Volume** 
 `Volume`is simply an abstraction of data in the form of file and directory within a Pod. It exists as long as its Pod exists.

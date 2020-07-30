@@ -1,6 +1,6 @@
 const theme = {
   light: {
-    backgroundColor: 'var(--codeanit-colors-body-0, #FFFFFF)',
+    backgroundColor: 'white',
     borderColor: '#f5f5f9',
     boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
     blue: 'var(--codeanit-colors-brand, #5184f9)',
@@ -44,7 +44,7 @@ const theme = {
       },
       white: '#FFFFFF',
     },
-    fontColor: 'var(--codeanit-colors-typeface-0, #2B2D3E)',
+    fontColor: 'black',//'var(--codeanit-colors-typeface-0, #2B2D3E)',
     foregroundColor:
       'var(--codeanit-colors-body-1, rgba(217, 230, 247, 0.55))',
     overlayBackground:
@@ -53,7 +53,7 @@ const theme = {
   },
 
   dark: {
-    backgroundColor: 'var(--codeanit-colors-body-0, #1b1e21)',
+    backgroundColor: 'black',//'var(--codeanit-colors-body-0, #1b1e21)',
     borderColor: 'rgba(255, 255, 255, 0.1)',
     boxShadow: 'rgba(0,0,0,0.2) 0px 20px 40px',
     blue: 'var(--codeanit-colors-brand, #5184f9)',
@@ -98,7 +98,7 @@ const theme = {
       },
       white: '#FFFFFF',
     },
-    fontColor: 'var(--codeanit-colors-typeface-0, #FFFFFF)',
+    fontColor: 'white',//'var(--codeanit-colors-typeface-0, #FFFFFF)',
     foregroundColor: 'var(--codeanit-colors-body-1, rgba(9, 14, 21, 0.6))',
     overlayBackground: 'var(--codeanit-colors-body-2, rgba(0,0,0,0.40))',
     transitionTime: 0.5,
