@@ -1,7 +1,7 @@
 ---
 
 title: Kubernetes Components
-subtitle: A at the building blocks in simple terms for quick understanding
+subtitle: A quick look at the building blocks in simple terms for quick understanding
 date: '2020-07-12'
 categories: ['kubernetes', 'devops', 'basics']
 keywords: ['kubernetes', 'devops', 'basics', 'series', 'part_3', 'components']
