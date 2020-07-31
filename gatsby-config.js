@@ -21,7 +21,7 @@ module.exports = {
       'Technical Articles',
       'Programming Blog',
     ],
-    title: "Anit Shrestha Manandhar | Software Development Service | Blog",
+    title: "Blog By Anit Shrestha Manandhar",
     titleAlt: 'codeanit.com',
     description:
       "Anit is a hands-on code experienced software engineer who blogs and provides software development service.",
@@ -76,8 +76,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Technical Blog by Anit Shrestha Manandhar.`,
-        short_name: `blog by codeanit`,
+        name: `Blog By Anit Shrestha Manandhar.`,
+        short_name: `Blog By Anit`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
