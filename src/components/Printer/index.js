@@ -108,17 +108,13 @@ const TitleWrapper = styled('div')`
   width: 800px;
 
   h1 {
-    min-height: 60px;
-    max-height: 60px;
     font-weight: 600;
     font-size: 42px;
-    line-height: 3px;
   }
 
   h2 {
     font-weight: bold;
     font-size: 30px;
-    line-height: 15px;
   }
 
   p {
@@ -135,8 +131,8 @@ const PrinterComponent = ( ogData ) => (
     <Matrix/>
     <TitleWrapper>
     <Logo height='150' width='150' />
-    <h2>{ ogData.subtitle }</h2>
     <h1>{ ogData.title }</h1>
+    <h2>{ ogData.subtitle }</h2>
     <p>Blog by Anit Shrestha Manandhar</p>
     <p>codeanit.com/blog/{ogData.slug}</p>
     </TitleWrapper>

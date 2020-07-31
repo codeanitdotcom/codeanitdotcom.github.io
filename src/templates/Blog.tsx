@@ -53,7 +53,7 @@ const Blog: React.FC<BlogProps> = (props) => {
         const { site } = layoutProps;
         const progressBarTarget = React.createRef<HTMLDivElement>();
         const parsedDate = new Date(Date.parse(date));
-        const SeoBanner = `/opengraph-images/${slugify(title)}.png`;
+        const SeoBanner = `/opengraph-images/${slug}.png`;
         
         return (
           <article className="h-entry">
@@ -65,7 +65,6 @@ const Blog: React.FC<BlogProps> = (props) => {
               pathname={slug + '/'}
               date={date}
             />
-            <br/>
             <br/>
             <Hero id="top">
               <Heading fontSize={50} mb={1}>{title}</Heading>
