@@ -75,8 +75,6 @@ const IndexPage = ({ data, location }: Props) => {
           <MainBlock>
             <Seo />
             <br/>
-            <br/>
-            <br/>
             <Heading fontSize={33} mb={6}>Hello, World!</Heading>
             <Heading fontSize={57} mb={6}>
               <Link style={{ textDecoration: `none`, color: theme.dark ? `white` : `black`}} to={`/about`}>I am Anit Shrestha Manandhar.</Link>

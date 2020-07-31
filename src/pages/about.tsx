@@ -15,9 +15,8 @@ const AboutPage = () => {
         return (
           <MainBlock>
             <Seo />
+            <br/>
             <Box>
-              <br/>
-              <br/>
               <Heading fontSize={57} mb={3}>About Me</Heading>
               <p>I am Anit Shrestha Manandhar from Kathmandu, Nepal. I have completed my Bachelor's in Information Management from Tribhuvan University in 2009. I have completed a certification course Diploma in Information Technology from NIIT in 2003-2004.</p>
               <p>I have been working professionally as software engineer since 2007. I have worked mostly as an object oriented backend developer. I can code proficiently in Java, C#, PHP and JavaScript and I am improving my skills in Golang and TypeScript. Although I can work with frontend frameworks like React and Angular, I do not prefer to use the “Full Stack” tag. “Frontend” and “Backend” are two different worlds which would not mix easily and are difficult to live in at the same time. I strongly believe in the “DevOps” philosophy to automate the end to end processes by removing any bottlenecks in the discovery, design, development and delivery processes that require years of experience and expertise.</p>

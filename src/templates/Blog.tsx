@@ -66,7 +66,6 @@ const Blog: React.FC<BlogProps> = (props) => {
               date={date}
             />
             <br/>
-            <br/>
             <Hero id="top">
               <Heading fontSize={50} mb={1}>{title}</Heading>
               {subtitle ? <Heading fontSize={21} mb={2}>{subtitle}</Heading> : null}
